@@ -3,7 +3,7 @@ name: Deploy Cloudflare Worker
 on:
   push:
     branches:
-      - main   # 推到哪个分支触发部署，按需改
+      - main    # 推到哪条分支触发部署，你可以按需要改
 
 jobs:
   deploy:
@@ -13,13 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install Wrangler
-        run: npm install -g wrangler
+      # 如果项目需要安装依赖（有 package.json），建议加这一段
+      # 没有的话可以删除这个 step
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          elif [ -f package.json ]; then
+            npm install
+          fi
+
+      - name: Install Wrangler v2
+        run: npm install -g wrangler@2
 
       - name: Deploy with Wrangler
         env:
