@@ -2,7 +2,7 @@ account_id = "bfad50ce69c95926afe0073351c281e0"
 name = "jfeng"
 type = "webpack"
 workers_dev = true
-compatibility_date = "2024-01-27"
+compatibility_date = "2026-03-03"
 
 # 静态资源目录（Workers Sites）
 site = { bucket = "./public" }
