@@ -3,7 +3,7 @@ name: Deploy Cloudflare Worker
 on:
   push:
     branches:
-      - main    # 推到哪条分支触发部署，你可以按需要改
+      - master    # 推到哪条分支触发部署，你可以按需要改
 
 jobs:
   deploy:
