@@ -20,8 +20,6 @@ jobs:
         with:
           node-version: '20'
 
-      # ⚠ 已删除 Install dependencies 这一步，因为你没有 package.json
-
       - name: Install Wrangler v2
         run: npm install -g wrangler@2
 
@@ -29,4 +27,4 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          wrangler deploy
+          wrangler publish
