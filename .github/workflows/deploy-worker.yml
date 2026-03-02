@@ -20,14 +20,9 @@ jobs:
         with:
           node-version: '20'
 
-      # 安装依赖（现在仓库有 package.json 了）
       - name: Install dependencies
         run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+          npm install
 
       - name: Install Wrangler v2
         run: npm install -g wrangler@2
