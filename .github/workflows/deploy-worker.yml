@@ -3,7 +3,9 @@ name: Deploy Cloudflare Worker
 on:
   push:
     branches:
-      - master    # 推到哪条分支触发部署，你可以按需要改
+      - master
+
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -18,15 +20,7 @@ jobs:
         with:
           node-version: '20'
 
-      # 如果项目需要安装依赖（有 package.json），建议加这一段
-      # 没有的话可以删除这个 step
-      - name: Install dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          elif [ -f package.json ]; then
-            npm install
-          fi
+      # ⚠ 已删除 Install dependencies 这一步，因为你没有 package.json
 
       - name: Install Wrangler v2
         run: npm install -g wrangler@2
